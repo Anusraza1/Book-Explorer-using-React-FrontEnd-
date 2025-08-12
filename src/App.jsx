@@ -1,11 +1,19 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import Favourite from './pages/favourites';
+import Trending from './pages/trending';
 import Navbar from './Navbar';
+import "./styles/main.css";
+
 
 function App() {
   return (
     <>
       <Navbar />
+      <Routes>
+        <Route path="/pages/favourites" element={<Favourite />} />
+        <Route path="/pages/trending" element={<Trending />} />
+      </Routes>
     </>
   )
 }
