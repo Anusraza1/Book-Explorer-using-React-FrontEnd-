@@ -4,9 +4,11 @@ import './styles/navbar.css';
 const Navbar = () => {
     return (
         <nav className="navbar">
-            <h1>Book Explorer</h1>
             <div>
-                <Link to="/pages/trending">Trending</Link>
+                <Link className="logo" to="/pages/trending">Book Explorer</Link>
+            </div>
+            <div className="nav-links">
+                <Link to="/pages/trending">Home</Link>
                 <Link to="/pages/favourites">Favourites</Link>
             </div>
         </nav>

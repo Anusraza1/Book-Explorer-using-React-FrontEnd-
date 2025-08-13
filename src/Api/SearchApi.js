@@ -1,6 +1,6 @@
 export async function searchBooks(query) {
   const apiKey = import.meta.env.VITE_GOOGLE_BOOKS_API_KEY;
-  const url = `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&key=${apiKey}`;
+  const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}`;
   try {
     const response = await fetch(url);
     if (!response.ok) {

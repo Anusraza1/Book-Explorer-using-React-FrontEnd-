@@ -1,50 +1,38 @@
 import { useState, useEffect } from "react";
 import BookList from "../components/BookList";
-import {searchBooks} from "../Api/SearchApi";
-
-
+import { searchBooks } from "../Api/SearchApi";
+import SearchBar from "../components/SearchBar";
 
 const Trending = () => {
-    const [books, setBooks] = useState([]);
-    const [searchItem, setSearchItem] = useState("");
+  const [books, setBooks] = useState([]);
+  const [allBooks, setAllBooks] = useState([]);
+  const [searchItem, setSearchItem] = useState("");
+  const [loading, setLoading] = useState(true);
 
-    const handleSearch = (e) => {
-        e.preventDefault();
-        setSearchItem(e.target.value);
-    }
+  useEffect(() => {
+    const fetchBooks = async () => {
+      setLoading(true);
+      setBooks([]); // Optional: clear books while loading
+      const data = await searchBooks("popular");
+      setBooks(data);
+      setAllBooks(data);
+      setLoading(false);
+    };
+    fetchBooks();
+  }, []);
 
-    const handleSearchClick = async () => {
-        const filteredBooks = books.filter((book) =>
-            book.volumeInfo?.title?.toLowerCase().includes(searchItem.toLowerCase())        );
-        setBooks(filteredBooks);
-    }
-
-    useEffect(() => {
-        const fetchBooks = async () => {
-            const data = await searchBooks("bestsellers");
-            setBooks(data);
-        };
-        fetchBooks();
-    }, []);
-
-    return (
-        <>
-        <div className="SearchBarContainer">
-            <input 
-            type="text" 
-            value={searchItem} 
-            placeholder="Search for books..." 
-            onChange={(e) => handleSearch(e)} 
-            className="search-input"
-            />
-            <button 
-            onClick={handleSearchClick}
-            className="search-button"
-            >Search</button>
-        </div>
-        <BookList books={books} />
-        </>
-    );
-}
+  return (
+    <>
+      <SearchBar
+        searchItem={searchItem}
+        setSearchItem={setSearchItem}
+        books={books}
+        allBooks={allBooks}
+        setBooks={setBooks}
+      />
+      {loading ? <p>Loading books...</p> : <BookList books={books} />}
+    </>
+  );
+};
 
 export default Trending;
