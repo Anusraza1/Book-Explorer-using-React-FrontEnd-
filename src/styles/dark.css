@@ -1,0 +1,106 @@
+/* Dark body */
+body.dark-theme {
+    background: #0f172a;
+    color: #f1f5f9;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Dark Search Bar */
+body.dark-theme .SearchBarContainer {
+    background: none;
+}
+
+body.dark-theme .search-input {
+    background-color: #101a31;
+    color: #f1f5f9;
+    border: 1px solid #64748b;
+}
+
+body.dark-theme .search-input:focus {
+    border-color: #60a5fa;
+}
+
+body.dark-theme .search-button {
+    background: linear-gradient(90deg, #334155, #1e293b);
+    color: #f1f5f9;
+    border: solid 1px #64748b;
+}
+
+body.dark-theme .search-button:hover {
+    background: linear-gradient(90deg, #1e293b, #181f29);
+    color: #fff;
+}
+
+/* Dark Book List */
+body.dark-theme .book-list {
+    background: none;
+}
+
+/* Dark Book Card */
+body.dark-theme .book-card {
+    background: #23232a;
+    box-shadow: 0 4px 18px rgba(59, 130, 246, 0.10);
+}
+
+body.dark-theme .book-card-body h3 {
+    color: #f1f5f9;
+}
+
+body.dark-theme .book-card-authors {
+    color: #94a3b8;
+}
+
+body.dark-theme .book-card-desc {
+    color: #cbd5e1;
+}
+
+body.dark-theme .book-card a {
+    background: #334155;
+    color: #60a5fa;
+}
+
+body.dark-theme .book-card a:hover {
+    background: #60a5fa;
+    color: #23232a;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.18);
+}
+
+/* Navbar */
+body.dark-theme .navbar {
+    background: linear-gradient(90deg, #23232a 0%, #334155 100%);
+    border-bottom: 1px solid #64748b;
+}
+
+body.dark-theme .logo {
+    color: #f1f5f9;
+    text-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
+}
+
+body.dark-theme .nav-links a {
+    color: #f1f5f9;
+    background: none;
+}
+
+body.dark-theme .nav-links a:hover,
+body.dark-theme .nav-links a:focus {
+    color: #60a5fa;
+    background-color: #23232a;
+    box-shadow: 0 2px 12px rgba(59, 130, 246, 0.12);
+}
+
+/* Theme Toggle */
+body.dark-theme .theme-toggle-btn {
+    background: linear-gradient(90deg, #23232a 0%, #334155 100%);
+    color: #f1f5f9;
+}
+
+body.dark-theme .theme-toggle-btn:hover,
+body.dark-theme .theme-toggle-btn:focus {
+    background: linear-gradient(90deg, #334155 0%, #23232a 100%);
+    box-shadow: 0 4px 16px rgba(59, 130, 246, 0.22);
+}
+
+body.dark-theme .theme-icon {
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}

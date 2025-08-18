@@ -1,9 +1,9 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Favourite from './pages/favourites';
-import Trending from './pages/trending';
-import Navbar from './Navbar';
-import "./styles/main.css";
+import { Routes, Route } from 'react-router-dom'
+import Favourite from './pages/favourites'
+import Trending from './pages/trending'
+import Navbar from './Navbar'
+import "./styles/main.css"
+import "./styles/dark.css"
 
 
 function App() {

@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
-import './styles/navbar.css';
+import { Link } from "react-router-dom"
+import './styles/navbar.css'
+import ThemeToggle from "./components/ThemeToggle"
 
 const Navbar = () => {
     return (
@@ -11,6 +12,7 @@ const Navbar = () => {
                 <Link to="/pages/trending">Home</Link>
                 <Link to="/pages/favourites">Favourites</Link>
             </div>
+            <ThemeToggle />
         </nav>
     )
 }
