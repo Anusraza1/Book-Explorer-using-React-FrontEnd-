@@ -11,8 +11,8 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/pages/favourites" element={<Favourite />} />
-        <Route path="/pages/trending" element={<Trending />} />
+        <Route path="/favourites" element={<Favourite />} />
+        <Route path="/" element={<Trending />} />
       </Routes>
     </>
   )

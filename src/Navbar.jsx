@@ -6,11 +6,11 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div>
-                <Link className="logo" to="/pages/trending">Book Explorer</Link>
+                <Link className="logo" to="/">Book Explorer</Link>
             </div>
             <div className="nav-links">
-                <Link to="/pages/trending">Home</Link>
-                <Link to="/pages/favourites">Favourites</Link>
+                <Link to="/">Home</Link>
+                <Link to="/favourites">Favourites</Link>
             </div>
             <ThemeToggle />
         </nav>

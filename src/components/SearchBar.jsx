@@ -1,16 +1,15 @@
-const SearchBar = (prop) => {
-  const { searchItem, setSearchItem, books, allBooks, setBooks } = prop;
-
+const SearchBar = ({ searchItem, setSearchItem, onSearch }) => {
   const handleInputChange = (e) => {
-    const value = e.target.value;
-    setSearchItem(value);
-    if (value.trim() === "") {
-      setBooks(allBooks);
-    } else {
-      const filteredBooks = books.filter((book) =>
-        book.volumeInfo?.title?.toLowerCase().includes(value.toLowerCase())
-      );
-      setBooks(filteredBooks);
+    setSearchItem(e.target.value);
+  };
+
+  const handleSearchClick = () => {
+    onSearch();
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      onSearch();
     }
   };
 
@@ -21,9 +20,10 @@ const SearchBar = (prop) => {
         value={searchItem}
         placeholder="Search for books..."
         onChange={handleInputChange}
+        onKeyDown={handleKeyDown}
         className="search-input"
       />
-      <button onClick={() => handleInputChange({ target: { value: searchItem } })} className="search-button">
+      <button onClick={handleSearchClick} className="search-button">
         Search
       </button>
     </div>
