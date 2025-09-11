@@ -2,8 +2,15 @@ import { Heart, LibraryBigIcon } from "lucide-react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const BookCard = ({ book }) => {
-  const { title, authors, imageLinks, infoLink } = book.volumeInfo;
-
+  const { 
+    title, 
+    authors, 
+    imageLinks, 
+    infoLink, 
+    publishedDate, 
+    description, 
+    categories // categories usually contain genres
+  } = book.volumeInfo;
   // Only use localStorage for reading list here
   const [reading, setReading] = useLocalStorage("reading", []);
   const [favourites, setFavourites] = useLocalStorage("favourites", []);
@@ -70,7 +77,16 @@ const BookCard = ({ book }) => {
       </div>
       <div className="book-card-body">
         <h3>{title}</h3>
-        <p>{authors?.join(", ")}</p>
+        <p><strong>Author(s):</strong> {authors?.join(", ") || "Unknown"}</p>
+        <p><strong>Published:</strong> {publishedDate || "N/A"}</p>
+        <p><strong>Genre:</strong> {categories?.join(", ") || "N/A"}</p>
+        <p className="book-description">
+          {description 
+            ? description.length > 200 
+              ? description.slice(0, 200) + "..." 
+              : description 
+            : "No description available."}
+        </p>
         <a href={infoLink} target="_blank" rel="noopener noreferrer">
           More Info
         </a>

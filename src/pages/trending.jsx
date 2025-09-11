@@ -17,23 +17,22 @@ const Trending = () => {
     setLoading(true);
     const startIndex = pageIndex * booksPerPage;
     const data = await searchBooks(query, startIndex, booksPerPage);
-    setBooks(data.items || []);
-    setTotalBooks(data.totalItems || 0);
+    setBooks(data?.items || []);
+    setTotalBooks(data?.totalItems || 0);
     setLoading(false);
   };
 
   useEffect(() => {
     const query = searchItem.trim() ? searchItem : "popular";
     fetchBooks(query, page);
-    // eslint-disable-next-line
   }, [searchItem, page]);
 
-  useEffect(() => {
-    if (inputValue === "") {
-      setSearchItem("popular");
-      setPage(0);
-    }
-  }, [inputValue]);
+  // useEffect(() => {
+  //   if (inputValue === "") {
+  //     setSearchItem("popular");
+  //     setPage(0);
+  //   }
+  // }, [inputValue]);
 
   const handleSearch = () => {
     setSearchItem(inputValue.trim() ? inputValue : "popular"); // use "popular" if input is empty
@@ -44,11 +43,21 @@ const Trending = () => {
     <>
       <SearchBar
         searchItem={inputValue}
-        setSearchItem={setInputValue}
+        setSearchItem={(v) => {
+          if (v === "") {
+            setSearchItem("popular");
+            setPage(0);
+          } else {
+            setSearchItem(v);
+          }
+          setInputValue(v);
+        }}
         onSearch={handleSearch}
       />
       {loading ? <p>Loading books...</p> : <BookList books={books} />}
-      <div style={{ display: "flex", justifyContent: "center", margin: "2rem 0" }}>
+      <div
+        style={{ display: "flex", justifyContent: "center", margin: "2rem 0" }}
+      >
         <button
           onClick={() => setPage((p) => Math.max(p - 1, 0))}
           disabled={page === 0}
